@@ -17,7 +17,7 @@ Because we're lazy and don't want to manually export a file one by one.
 
 Install the add-in by downloading the latest release from the [releases page](https://github.com/cadifyai/Fusion-Exporter/releases). Unzip the downloaded file.
 
-Open Fusion 360, and go to the `Utilities > Add-ins` menu. You should see something like this pop-up:
+Open Fusion 360, and go to the `Utilities > Add-ins` menu.
 
 <div align="center">
     <img src="./media/menu.png" width="300">
