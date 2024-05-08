@@ -4,7 +4,7 @@
 Fusion-Exporter
 </h1>
 
-An Autodesk Fusion add-in to automagically export your project into the file format that you want.
+An Fusion add-in to automagically export your project into the file format that you want.
 
 Inspired and based on [tapnair/Project-Archiver](https://github.com/tapnair/Project-Archiver)
 
