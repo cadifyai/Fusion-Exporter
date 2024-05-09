@@ -1,4 +1,5 @@
 <div align="center">
+<img src="media/logo.jpg" height=100>
 
 <h1>
 Fusion-Exporter
