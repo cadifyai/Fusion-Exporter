@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion",
+	"type":	"addin",
+	"id":	"63d9ab8b-a108-4247-86e3-d27e1e37b0f2",
+	"author":	"Angus Stewart",
+	"description":	{
+		"":	"A Fusion add-in to automagically export your project."
+	},
+	"version":	"v0.0.0",
+	"runOnStartup":	false,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	false
+}
