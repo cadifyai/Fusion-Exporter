@@ -10,6 +10,12 @@ class ExportFailure(Exception):
         super().__init__(message)
 
 
+class BreakLinkFailure(Exception):
+    """Exception raised when a link cannot be broken."""
+    def __init__(self, message: str):
+        super().__init__(message)
+
+
 def export(
     folder_path: pathlib.Path,
     file_type: str,
@@ -70,6 +76,7 @@ def _export_design(
     reference_behaviour: str
 ):
     """Export the specified design to the specified folder."""
+    # Check if the design references other designs
     if reference_behaviour == "Ignore Design":
         if data_file.hasChildReferences:
             futil.log(f"Ignoring {design_path} because it references other designs")
@@ -77,30 +84,29 @@ def _export_design(
 
     # Open design
     design_document = _open_design(data_file)
-    design_document.allDocumentReferences.count
 
-    if data_file.hasChildReferences:
-        futil.log(f"Breaking references for {design_path}")
-        futil.design().activateRootComponent()
-        try:
+    try:
+        if data_file.hasChildReferences:
+            futil.log(f"Breaking references for {design_path}")
+            futil.design().activateRootComponent()
             for occ in futil.design().rootComponent.allOccurrences:
                 if occ.isReferencedComponent and not occ.breakLink():
-                    raise Exception(occ.name)
-        except Exception as e:
-            futil.log(f"Failed to break links for {design_path}: {e}")
-            return
+                    raise BreakLinkFailure(occ.name)
 
-    # Ensure the export folder exists
-    final_path = folder_path / design_path
-    final_path.parent.mkdir(parents=True, exist_ok=True)
+        # Ensure the export folder exists
+        final_path = folder_path / design_path
+        final_path.parent.mkdir(parents=True, exist_ok=True)
 
-    # Export the design
-    root = futil.design().rootComponent
-    options = _export_options(file_type, str(final_path), root)
-    futil.design().exportManager.execute(options)
-
-    # Close the design
-    design_document.close(False)
+        # Export the design
+        root = futil.design().rootComponent
+        options = _export_options(file_type, str(final_path), root)
+        futil.design().exportManager.execute(options)
+    except BreakLinkFailure as e:
+        futil.log(f"Failed to break links for {design_path}: {e}")
+    except Exception as e:
+        futil.handle_error(f"Failed to export {design_path}: {e}")
+    finally:
+        design_document.close(False)
 
 
 def _open_design(data_file: adsk.core.DataFile) -> adsk.core.Document:
