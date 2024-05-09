@@ -25,3 +25,7 @@ Open Fusion 360, and go to the `Utilities > Add-ins` menu.
 </div>
 
 Click on the green `+` icon and select the extracted folder. You should see the add-in appear in the list of installed add-ins. Run the add-in by clicking on the `Run` button. You should see the `Fusion Exporter` icon show up under `Utilities`.
+
+<div align="center">
+    <img src="./media/toolbar.png" width="500">
+</div>
