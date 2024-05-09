@@ -5,7 +5,7 @@
 Fusion-Exporter
 </h1>
 
-An Fusion add-in to automagically export your project into the file format that you want.
+A Fusion add-in to automagically export your project into any file format.
 
 Inspired and based on [tapnair/Project-Archiver](https://github.com/tapnair/Project-Archiver)
 
