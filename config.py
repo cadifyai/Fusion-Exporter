@@ -12,4 +12,4 @@ DEBUG = True
 # part of the ID to better ensure the ID is unique.
 COMPANY_NAME = 'CadifyAI'
 ADDIN_PATH = pathlib.Path(__file__).parent
-ADDIN_NAME = ADDIN_PATH.name
+ADDIN_NAME = ADDIN_PATH.name.replace('.', '_')
